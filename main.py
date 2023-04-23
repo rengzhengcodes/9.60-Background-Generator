@@ -27,8 +27,16 @@ def get_random_color(rng: Random) -> tuple:
 def get_canvas_and_brush(
     size: tuple = (256, 256), seed: int = 42
 ) -> tuple[Image, Random]:
+    """Creates an Image of the specified size. Returns a Random with the given
+    seed.
+
+    Attributes:
+        size: The size of the board we're implementing
+        seed: The RNG seed.
+    Returns:
+        A tuple of form (Image, seed)
     """
-    """
+    return (Image.new("RGB", size), Random(seed))
 
 if __name__ == "__main__":
     entropy: Random = Random(42)
