@@ -91,9 +91,7 @@ def generate_background(size: int = 256, seed: int = 42, difficulty: int = 0):
     canvas, brush = get_canvas_and_brush((size, size), seed)
 
     # gets the block offsets for this specific image
-    blocks: dict = generate_blocks_and_offsets(
-        size, difficulty
-    )
+    blocks: dict = generate_blocks_and_offsets(size, difficulty)
 
     # block starts
     starts: tuple[tuple[int, int]] = tuple(blocks.keys())
@@ -118,6 +116,7 @@ def generate_background(size: int = 256, seed: int = 42, difficulty: int = 0):
             canvas.putpixel((x_start + x_off, y_start + y_off), color)
 
     return canvas
+
 
 if __name__ == "__main__":
     for i in range(9):
