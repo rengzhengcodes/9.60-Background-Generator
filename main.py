@@ -4,7 +4,7 @@
 from random import Random
 
 # math calculation library
-from math import ceil, floor, log2, pow
+from math import ceil, floor, log2
 
 # image editing software for generation
 from PIL import Image

@@ -1,4 +1,4 @@
-# ensures all values are >= 255
+"""Testing for the image generation file"""
 from main import *
 
 
