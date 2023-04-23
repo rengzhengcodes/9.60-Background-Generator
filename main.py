@@ -38,4 +38,22 @@ def get_canvas_and_brush(
     """
     return (Image.new("RGB", size), Random(seed))
 
+
+def generate_background(
+    size: tuple = 256, seed: int = 42, difficulty: int = 0
+):
+    """
+    Attributes:
+        size: The size of the square
+        seed: The seed of the brush
+        difficulty: The difficulty of the background
     
+    Returns:
+        A background of difficulty (2^difficulty differed tiles).
+    """
+    canvas: Image
+    brush: Random
+    canvas, brush = get_canvas_and_brush((size, size), seed)
+
+    return canvas
+
