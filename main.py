@@ -2,6 +2,7 @@
 
 # random library for random background color fixing
 from random import Random
+
 # math calculation library
 from math import ceil, floor, log2, pow
 
@@ -14,16 +15,12 @@ def get_random_color(rng: Random) -> tuple:
 
     Attributes:
         rng: The rng source.
-    
+
     Returns:
         A tuple of form (r, g, b)
     """
 
-    return (
-            rng.randint(0, 255),
-            rng.randint(0, 255),
-            rng.randint(0, 255)
-        )
+    return (rng.randint(0, 255), rng.randint(0, 255), rng.randint(0, 255))
 
 
 def get_canvas_and_brush(
@@ -64,14 +61,12 @@ def generate_blocks_and_offsets(
     # generates the blocks assuming a square
     for row_start in range(0, div_size, size):
         for col_start in range(0, div_size, size):
-
             # initializes the list
             ret[(row_start, col_start)] = []
 
             # generates the offsets per block
             for row_off in range(div_size):
                 for col_off in range(div_size):
-
                     ret[(row_start, col_start)].append((row_off, col_off))
 
             # tuples the offsets
@@ -80,15 +75,13 @@ def generate_blocks_and_offsets(
     return ret
 
 
-def generate_background(
-    size: int = 256, seed: int = 42, difficulty: int = 0
-):
+def generate_background(size: int = 256, seed: int = 42, difficulty: int = 0):
     """
     Attributes:
         size: The size of the square
         seed: The seed of the brush
         difficulty: The difficulty of the background
-    
+
     Returns:
         A background of difficulty (2^difficulty differed tiles).
     """
@@ -97,4 +90,3 @@ def generate_background(
     canvas, brush = get_canvas_and_brush((size, size), seed)
 
     return canvas
-
