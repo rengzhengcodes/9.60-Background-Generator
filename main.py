@@ -2,6 +2,8 @@
 
 # random library for random background color fixing
 from random import Random
+# math calculation library
+from math import ceil, floor, log2, pow
 
 # image editing software for generation
 from PIL import Image
@@ -39,8 +41,47 @@ def get_canvas_and_brush(
     return (Image.new("RGB", size), Random(seed))
 
 
+def generate_blocks_and_offsets(
+    size: int, dividers: int = 0
+) -> dict[tuple[int, int], tuple[tuple[int, int]]]:
+    """
+    Attributes:
+        size: The size of the image to generate. Assumes exp of 2.
+        dividers: Number of block divisions per side.
+    Returns:
+        A dictionary where the keys are tuples of the top left corners of each
+        block and the list the tuples fo the offsets of each side.
+    """
+
+    # The number of divisions you can make in a image of size x
+    size_exp: int = floor(log2(size))
+    # the size of the divisions
+    div_size: int = ceil(2 ** (size_exp - dividers))
+
+    # tracks the return value
+    ret: dict[tuple[int, int], tuple[tuple[int, int]]] = {}
+
+    # generates the blocks assuming a square
+    for row_start in range(0, div_size, size):
+        for col_start in range(0, div_size, size):
+
+            # initializes the list
+            ret[(row_start, col_start)] = []
+
+            # generates the offsets per block
+            for row_off in range(div_size):
+                for col_off in range(div_size):
+
+                    ret[(row_start, col_start)].append((row_off, col_off))
+
+            # tuples the offsets
+            ret[(row_start, col_start)] = tuple(ret[(row_start, col_start)])
+
+    return ret
+
+
 def generate_background(
-    size: tuple = 256, seed: int = 42, difficulty: int = 0
+    size: int = 256, seed: int = 42, difficulty: int = 0
 ):
     """
     Attributes:
