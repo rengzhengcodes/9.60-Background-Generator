@@ -38,8 +38,4 @@ def get_canvas_and_brush(
     """
     return (Image.new("RGB", size), Random(seed))
 
-if __name__ == "__main__":
-    entropy: Random = Random(42)
-
-    # ensures no 
-    print(get_random_color(entropy))
+    

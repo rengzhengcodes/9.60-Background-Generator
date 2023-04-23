@@ -17,6 +17,11 @@ def test_colors(tests: int = 1000):
             exp_rng.randint(0, 255),
             exp_rng.randint(0, 255),
         ) == color, "Entropy source is not from input"
+        # asserts the colors are less than or equal to 255 and nonnegative and ints
+        color_check: tuple[bool] = (
+            isinstance(int) and (0 <= value <= 255) for value in color
+        )
+        assert all(color_check), "Colors are not ints in [0, 255]."
     
     test_rng2: Random = Random(34)
     exp_rng2: Random = Random(34)
@@ -29,6 +34,11 @@ def test_colors(tests: int = 1000):
             exp_rng2.randint(0, 255),
             exp_rng2.randint(0, 255),
         ) == color, "Entropy source is not from input"
+        # asserts the colors are less than or equal to 255 and nonnegative and ints
+        color_check: tuple[bool] = (
+            isinstance(int) and (0 <= value <= 255) for value in color
+        )
+        assert all(color_check), "Colors are not ints in [0, 255]."
     
     for i in range(tests):
         color: tuple[int, int, int] = get_random_color(test_rng)
@@ -38,6 +48,11 @@ def test_colors(tests: int = 1000):
             exp_rng.randint(0, 255),
             exp_rng.randint(0, 255),
         ) == color, "Entropy source is not from input"
+        # asserts the colors are less than or equal to 255 and nonnegative and ints
+        color_check: tuple[bool] = (
+            isinstance(int) and (0 <= value <= 255) for value in color
+        )
+        assert all(color_check), "Colors are not ints in [0, 255]."
 
 if __name__ == "__main__":
     test_colors()
