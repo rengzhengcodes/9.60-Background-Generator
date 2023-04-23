@@ -19,7 +19,7 @@ def test_colors(tests: int = 1000):
         ) == color, "Entropy source is not from input"
         # asserts the colors are less than or equal to 255 and nonnegative and ints
         color_check: tuple[bool] = (
-            isinstance(int) and (0 <= value <= 255) for value in color
+            isinstance(value, int) and (0 <= value <= 255) for value in color
         )
         assert all(color_check), "Colors are not ints in [0, 255]."
     
@@ -36,7 +36,7 @@ def test_colors(tests: int = 1000):
         ) == color, "Entropy source is not from input"
         # asserts the colors are less than or equal to 255 and nonnegative and ints
         color_check: tuple[bool] = (
-            isinstance(int) and (0 <= value <= 255) for value in color
+            isinstance(value, int) and (0 <= value <= 255) for value in color
         )
         assert all(color_check), "Colors are not ints in [0, 255]."
     
@@ -50,9 +50,10 @@ def test_colors(tests: int = 1000):
         ) == color, "Entropy source is not from input"
         # asserts the colors are less than or equal to 255 and nonnegative and ints
         color_check: tuple[bool] = (
-            isinstance(int) and (0 <= value <= 255) for value in color
+            isinstance(value, int) and (0 <= value <= 255) for value in color
         )
         assert all(color_check), "Colors are not ints in [0, 255]."
 
 if __name__ == "__main__":
+    print("testing colors")
     test_colors()
